@@ -1,0 +1,27 @@
+server:
+  port: 8090
+  context-path: agg-service
+
+services:
+  theatre-service-url: http://localhost:8082/theatre-service
+  mvshow-service-url: http://localhost:8084/mv-show-service
+  booking-service-url: http://localhost:8085/booking-service
+
+gateway:
+  url: http://localhost:8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: theatre-service
+        url: http://localhost:8082/theatre-service/v3/api-docs
+      - name: metadata-service
+        url: http://localhost:8083/metadata-service/v3/api-docs
+      - name: mv-show-service
+        url: http://localhost:8084/mv-show-service/v3/api-docs
+      - name: booking-service
+        url: http://localhost:8085/booking-service/v3/api-docs
+      - name: agg-service
+        url: /v3/api-docs
+

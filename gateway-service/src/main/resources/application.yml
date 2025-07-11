@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: movie-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/movie-service/**
+          filters:
+            - StripPrefix=0
+        - id: theatre
+          uri: http://localhost:8082
+          predicates:
+            - Path=/theatre-service/**
+          filters:
+            - StripPrefix=0
+        - id: metadata
+          uri: http://localhost:8083
+          predicates:
+            - Path=/metadata-service/**
+          filters:
+            - StripPrefix=0
+        - id: show
+          uri: http://localhost:8084
+          predicates:
+            - Path=/show-service/**
+          filters:
+            - StripPrefix=0
+        - id: booking
+          uri: http://localhost:8085
+          predicates:
+            - Path=/booking-service/**
+          filters:
+            - StripPrefix=0
+        - id: agg
+          uri: http://localhost:8090
+          predicates:
+            - Path=/agg-service/**
+          filters:
+            - StripPrefix=0
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: movie-service
+        url: /movie-service/v3/api-docs
+      - name: theatre-service
+        url: /theatre-service/v3/api-docs
+      - name: metadata-service
+        url: /metadata-service/v3/api-docs
+      - name: show-service
+        url: /show-service/v3/api-docs
+      - name: booking-service
+        url: /booking-service/v3/api-docs
+      - name: agg-service
+        url: /agg-service/v3/api-docs
+  api-docs:
+    enabled: false

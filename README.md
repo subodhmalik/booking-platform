@@ -46,5 +46,5 @@ This is a **sample simulation** for a movie ticket **Booking Platform**, built w
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-repo/CustomBookMyShow.git
+   git clone https://github.com/your-repo/booking-platform.git
    cd booking-platform
